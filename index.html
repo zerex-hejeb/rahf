@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد رهف 🎀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Reem+Kufi:wght@700&family=Marhey:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef, #ffecd2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* خلفية كيوت متحركة (هيلو كيتي، قلوب، نجوم) */
+        .bg-animations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-item {
+            position: absolute;
+            bottom: -120px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(-55vh) rotate(180deg) scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* تصميم البطاقة الرئيسية بزجاج مدمج وفخم */
+        .card {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 30px 20px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.35);
+            width: 92%;
+            max-width: 400px;
+            text-align: center;
+            border: 3px solid #ff69b4;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            color: #d81b60;
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-family: 'Marhey', cursive;
+            text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.5);
+        }
+
+        p {
+            color: #ad1457;
+            font-size: 17px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ff69b4;
+            border-radius: 18px;
+            outline: none;
+            font-size: 17px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: #fff0f5;
+            color: #880e4f;
+            font-weight: 700;
+            box-shadow: inset 0 2px 5px rgba(255, 105, 180, 0.1);
+        }
+
+        input[type="text"]:focus {
+            border-color: #d81b60;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 18px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #d81b60, #c2185b);
+            transform: scale(1.06);
+        }
+
+        .no-btn {
+            background: linear-gradient(45deg, #e91e63, #ad1457);
+        }
+
+        /* الشاشة السرية (تציهر ما كتبته) */
+        #secret-screen {
+            display: none;
+            position: absolute;
+            z-index: 5;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 30px 20px;
+            border-radius: 25px;
+            border: 3px solid #d81b60;
+            text-align: center;
+            width: 88%;
+            max-width: 360px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        #secret-screen h2 {
+            color: #c2185b;
+        }
+
+        #secret-screen p {
+            color: #880e4f;
+            font-size: 16px;
+            margin: 15px 0;
+            background: #ffe6f2;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px dashed #ff69b4;
+        }
+
+        /* شاشة النهاية (نعم) */
+        #final-screen {
+            display: none;
+            text-align: center;
+            z-index: 3;
+            position: absolute;
+            width: 92%;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 25px;
+            border-radius: 30px;
+            border: 3px solid #ff69b4;
+            box-shadow: 0 0 35px rgba(255, 105, 180, 0.6);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .typewriter {
+            font-size: 15px;
+            color: #880e4f;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            text-align: right;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .signatures {
+            margin-top: 15px;
+            font-family: 'Reem Kufi', cursive;
+            font-size: 24px;
+            color: #d81b60;
+            border-top: 2px dashed #ffb6c1;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        /* شاشة النهاية (لا) */
+        #bloody-screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #bloody-screen h1 {
+            color: #ff1a1a;
+            font-size: 48px;
+            font-family: 'Marhey', cursive;
+            text-shadow: 0 0 25px #ff0000, 0 0 10px #8b0000;
+            animation: pulse 0.8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.12); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الخلفية المتحركة الكيوت (هيلو كيتي، قلوب، نجوم) -->
+    <div class="bg-animations" id="bgAnimations"></div>
+
+    <!-- صندوق الأسئلة الرئيسي -->
+    <div class="card" id="quiz-card">
+        <h2 id="q-title">السؤال 1 من 10</h2>
+        <p id="q-text">جاري التحميل...</p>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="اكتب إجابتك هنا بكيوتك...">
+        </div>
+        <div class="btn-container" id="btn-container">
+            <button onclick="checkAnswer()">التالي 🎀</button>
+        </div>
+    </div>
+
+    <!-- الشاشة السرية (تظهر ما كتبته رهف) -->
+    <div id="secret-screen">
+        <h2>⚠️ مفاجأة سرية!</h2>
+        <p>لقد كتبتِ: <span id="typed-display" style="font-weight:900; color:#d81b60;"></span></p>
+        <p style="background:none; border:none; margin:5px 0;">اعلمي أن زوجته تسلم عليكِ وتخبركِ أن بانتظارك أجمل مفاجأة في 4 أوت! 😉✨</p>
+        <button onclick="closeSecret()">العودة للأسئلة 🌸</button>
+    </div>
+
+    <!-- شاشة النهاية (إذا نعم) -->
+    <div id="final-screen">
+        <h2>عيد ميلاد سعيد يا رهف! 🌸</h2>
+        <div class="typewriter" id="typewriter-text"></div>
+        <div class="signatures">
+            <div style="font-size: 26px;">رهف 🎀</div>
+            <div style="font-size: 20px; color: #ad1457;">بهاء 💕</div>
+        </div>
+    </div>
+
+    <!-- شاشة النهاية (إذا لا) -->
+    <div id="bloody-screen">
+        <h1>روحي تقودي 🩸</h1>
+    </div>
+
+    <script>
+        // إعدادات تيليجرام
+        const botToken = "8542628347:AAHEq32eCmS_2Q6aAWm1VBYRcFGbZbCgjmc";
+        const chatId = "6435779303";
+
+        function sendToTelegram(textMessage) {
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(textMessage);
+            fetch(url).catch(err => console.log(err));
+        }
+
+        // توليد عناصر هيلو كيتي وقلوب ونجوم في الخلفية
+        const bg = document.getElementById('bgAnimations');
+        const kittySvg = `<svg width="45" height="45" viewBox="0 0 100 100"><path d="M30,20 Q50,0 70,20 Q90,30 80,60 Q70,90 50,85 Q30,90 20,60 Q10,30 30,20 Z" fill="#fff" stroke="#ff69b4" stroke-width="4"/><ellipse cx="38" cy="45" rx="4" ry="7" fill="#000"/><ellipse cx="62" cy="45" rx="4" ry="7" fill="#000"/><polygon points="50,52 46,58 54,58" fill="#ffcc00"/><path d="M75,15 Q90,5 85,30 Q75,35 75,15 Z" fill="#ff69b4"/></svg>`;
+        const heartSvg = `<svg width="32" height="32" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff69b4"/></svg>`;
+        const starSvg = `<svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#ffeb3b" stroke="#ff69b4" stroke-width="1"/></svg>`;
+
+        const items = [kittySvg, heartSvg, starSvg];
+        for (let i = 0; i < 18; i++) {
+            let div = document.createElement('div');
+            div.className = 'floating-item';
+            div.style.left = Math.random() * 100 + 'vw';
+            div.style.animationDuration = (5 + Math.random() * 5) + 's';
+            div.style.animationDelay = (Math.random() * 5) + 's';
+            div.innerHTML = items[i % items.length];
+            bg.appendChild(div);
+        }
+
+        // الأسئلة
+        const questions = [
+            { text: "ما هو وصفك الدقيق لـ بهاء في كلمة واحدة؟", type: "input" },
+            { text: "هل تذكرين أول يوم التقيتم فيه أو تحدثتم معاً؟", type: "input" },
+            { text: "ما هي الأكلة المفضلة التي يعشقها بهاء؟", type: "input" },
+            { text: "كم نسبة حبك لبهاء من 1 إلى 10؟", type: "input" },
+            { text: "هل تفضلين الخروج في نزهة هادئة أم البقاء والحديث طويلاً؟", type: "input" },
+            { text: "ما هي أكثر صفة تعجبك في شخصية بهاء؟", type: "input" },
+            { text: "لو أعطاكِ بهاء أمنية واحدة اليوم، ماذا ستطلبين؟", type: "input" },
+            { text: "هل تخبرينه دائماً بمدى أهميته في حياتك؟", type: "input" },
+            { text: "هل أنتِ مستعدة للاحتفال بعيد ميلادك المميز في 4 أوت؟", type: "input" },
+            { text: "سؤال النهاية: هل تحبيني يا رهف؟", type: "choice" }
+        ];
+
+        let currentQ = 0;
+        let allAnswers = [];
+        const qTitle = document.getElementById('q-title');
+        const qText = document.getElementById('q-text');
+        const userInput = document.getElementById('user-input');
+        const inputContainer = document.getElementById('input-container');
+        const btnContainer = document.getElementById('btn-container');
+        const quizCard = document.getElementById('quiz-card');
+        const secretScreen = document.getElementById('secret-screen');
+        const finalScreen = document.getElementById('final-screen');
+        const bloodyScreen = document.getElementById('bloody-screen');
+        const typedDisplay = document.getElementById('typed-display');
+
+        function loadQuestion() {
+            if (currentQ < questions.length) {
+                qTitle.innerText = `السؤال ${currentQ + 1} من 10`;
+                qText.innerText = questions[currentQ].text;
+                userInput.value = "";
+
+                if (questions[currentQ].type === "choice") {
+                    inputContainer.style.display = "none";
+                    btnContainer.innerHTML = `
+                        <button onclick="answerChoice('yes')">نعم ❤️</button>
+                        <button class="no-btn" onclick="answerChoice('no')">لا 💔</button>
+                    `;
+                } else {
+                    inputContainer.style.display = "block";
+                    btnContainer.innerHTML = `<button onclick="checkAnswer()">التالي 🎀</button>`;
+                }
+            }
+        }
+
+        function checkAnswer() {
+            let val = userInput.value.trim();
+            if(!val) val = "بدون إجابة";
+            allAnswers.push(`س${currentQ + 1}: ${val}`);
+
+            // إرسال الإجابة فوراً عبر تيليجرام
+            sendToTelegram(`💬 إجابة رهف على [${questions[currentQ].text}]:\n${val}`);
+
+            // الشرط الخاص بالسؤال الأول (ضرار اسطورة)
+            if (currentQ === 0 && val.toLowerCase() === "ضرار اسطورة") {
+                typedDisplay.innerText = val;
+                secretScreen.style.display = "block";
+                return;
+            }
+
+            currentQ++;
+            loadQuestion();
+        }
+
+        function closeSecret() {
+            secretScreen.style.display = "none";
+            currentQ++;
+            loadQuestion();
+        }
+
+        function answerChoice(choice) {
+            quizCard.style.display = "none";
+            if (choice === 'no') {
+                sendToTelegram(`⚠️ النتيجة النهائية: رهف أجابت بـ (لا) وشاشت وجهها شاشة سوداء ساخرة!`);
+                bloodyScreen.style.display = "flex";
+            } else {
+                sendToTelegram(`🎉 النتيجة النهائية: رهف أجابت بـ (نعم) وتم عرض رسالة الحب والشعر الاحتفالي!`);
+                finalScreen.style.display = "block";
+                startTypewriter();
+            }
+        }
+
+        // رسالة الحب والشعر المكتوب خصيصاً لرهف
+        const messageText = `كل عام وأنتِ أجمل أقدار الحياة يا رهف..
+أنتِ النور الذي ينير أيام بهاء، والبهجة التي تسكن قلبه كل يوم.
+
+يا رهف يا عطر الورد في الأيامِ ... يا من ملكتِ القلب والآلامِ
+عيناكِ بحرٌ والعيون سواحلٌ ... وبهاء في حبكِ متيمٌ هائمِ
+
+أحبكِ يا رهف وكل عام وأنتِ بقربه بخير وأمان.`;
+
+        function startTypewriter() {
+            let i = 0;
+            let speed = 35;
+            function type() {
+                if (i < messageText.length) {
+                    document.getElementById("typewriter-text").innerHTML += messageText.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // بدء التشغيل
+        loadQuestion();
+    </script>
+</body>
+</html>
